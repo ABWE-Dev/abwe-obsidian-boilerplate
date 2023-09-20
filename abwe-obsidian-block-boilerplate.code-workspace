@@ -1,0 +1,139 @@
+{
+		"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Debug Framework",
+				"request": "launch",
+				"port": 9222,
+				"type": "chrome",
+				"url": "http://localhost:6229",
+				"webRoot": "${workspaceFolder:Rock.JavaScript.Obsidian}/dist/"
+			},
+			{
+				"name": "Debug Framework (Attach to existing Chrome)",
+				"request": "attach",
+				"port": 9222,
+				"type": "chrome",
+				"urlFilter": "http://localhost:6229*",
+				"webRoot": "${workspaceFolder:Rock.JavaScript.Obsidian}/dist/"
+			},
+			{
+				"name": "Debug Blocks",
+				"request": "launch",
+				"port": 9222,
+				"type": "chrome",
+				"url": "http://localhost:6229",
+				"webRoot": "${workspaceFolder:Rock.JavaScript.Obsidian.Blocks}/dist/"
+			},
+			{
+				"name": "Debug Blocks (Attach to existing Chrome)",
+				"request": "attach",
+				"port": 9222,
+				"type": "chrome",
+				"urlFilter": "http://localhost:6229*",
+				"webRoot": "${workspaceFolder:Rock.JavaScript.Obsidian.Blocks}/dist/"
+			}
+		]
+	},
+	"extensions": {
+		"recommendations": [
+			"dbaeumer.vscode-eslint",
+			"vue.volar",
+			"orta.vscode-jest",
+			"vue.vscode-typescript-vue-plugin"
+		]
+	},
+	"folders": [
+		{
+			"path": "org.abwe.ObsidianBoilerplate"
+		},
+	],
+	"settings": {
+		"files.associations": {
+			"*.obs": "vue"
+		},
+		"volar.format.initialIndent": {
+			"typescript": true,
+			"html": true
+		},
+		"volar.completion.preferredAttrNameCase": "camel",
+		"volar.completion.preferredTagNameCase": "pascal",
+		"volar.vueserver.additionalExtensions": [
+			"obs"
+		],
+		"vue.features.complete.propNameCasing": "camel",
+		"vue.complete.casing.props": "camel",
+		"vue.complete.casing.tags": "pascal",
+		"vue.server.additionalExtensions": [
+			"obs"
+		],
+		"files.trimTrailingWhitespace": true,
+		"html.format.wrapAttributes": "preserve-aligned",
+		"html.format.wrapLineLength": 0,
+		"editor.codeActionsOnSave": {
+			"source.fixAll.eslint": true
+		},
+		"eslint.validate": [
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact",
+			"vue"
+		],
+		"[vue]": {
+			"editor.defaultFormatter": "Vue.volar"
+		},
+		"css.format.spaceAroundSelectorSeparator": true,
+		"typescript.tsdk": "node_modules/typescript/lib",
+		"workbench.settings.openDefaultSettings": false,
+		"workbench.settings.openDefaultKeybindings": false,
+		"css.lint.duplicateProperties": "warning",
+		"css.lint.zeroUnits": "warning",
+		"css.lint.propertyIgnoredDueToDisplay": "warning"
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "Build Obsidian Blocks",
+				"type": "shell",
+				"command": "npm run build",
+				"presentation": {
+					"showReuseMessage": false,
+					"clear": true,
+					"group": "build"
+				},
+				"group": {
+					"kind": "build",
+					"isDefault": false
+				},
+				"options": {
+					"cwd": "../org.abwe.ObsidianBoilerplate"
+				}
+			},
+			{
+				"label": "Watch Obsidian Blocks",
+				"type": "shell",
+				"command": "npm run --silent watch",
+				"presentation": {
+					"showReuseMessage": false,
+					"clear": true,
+					"echo": false,
+					"panel": "dedicated"
+				},
+				"options": {
+					"cwd": "${workspaceFolder:org.abwe.ObsidianBoilerplate}"
+				},
+				"isBackground": true,
+				"problemMatcher": {
+					"base": "$vite",
+					"background": {
+						"beginsPattern": "^rollup v",
+						"endsPattern": "waiting for changes\\.\\.\\.$"
+					}
+				}
+			}
+		]
+	}
+}
